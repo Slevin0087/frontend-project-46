@@ -1,3 +1,3 @@
-import  parseFiles  from '../lib/parseJSON.js';
+import genDiff from './lib/parseJSON';
 
-export default parseFiles;
+export default genDiff;
