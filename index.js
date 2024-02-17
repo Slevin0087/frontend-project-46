@@ -1,3 +1,3 @@
-import genDiff from './lib/parseJSON';
+import genDiff from './lib/diff';
 
 export default genDiff;
