@@ -5,7 +5,8 @@
   "description": "[![Actions Status](https://github.com/Slevin0087/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Slevin0087/frontend-project-46/actions)",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "jsonDiff": "node ./lib/diff.js"
   },
   "author": "",
   "license": "ISC",
