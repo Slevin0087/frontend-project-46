@@ -4,11 +4,14 @@
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/Slevin0087/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Slevin0087/frontend-project-46/actions)",
   "main": "index.js",
+  "simple-git-hooks": {
+    "pre-push": "make lint"
+  },
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
     "jsonDiff": "node ./lib/diff.js"
   },
-  "author": "",
+  "author": "Anzor Dzhemakulov",
   "license": "ISC",
   "dependencies": {
     "commander": "^11.1.0",
