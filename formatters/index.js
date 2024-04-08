@@ -1,4 +1,5 @@
-import formatterPlain from './plain.js';
-import { formatter, formatterJson } from './stylish.js';
+import plain from './plain.js';
+import stylish from './stylish.js';
+import json from './json.js';
 
-export { formatterPlain, formatter, formatterJson };
+export { plain, stylish, json };

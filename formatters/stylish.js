@@ -1,3 +1,5 @@
+import json from './json.js';
+
 const arrArr = [
   {
     type: 'recursion',
@@ -48,31 +50,10 @@ const arrArr = [
   }
 ]
 
-export const formatterJson = (arrAst) => {
-  const result = {};
-  arrAst.forEach((ast) => {
-    if (ast.type === 'added') {
-      result[`+ ${ast.key}`] = ast.val;
-    }
-    if (ast.type === 'removed') {
-      result[`- ${ast.key}`] = ast.val;
-    }
-    if (ast.type === 'norm') {
-      result[`  ${ast.key}`] = ast.val;
-    }
-    if (ast.type === 'reupdated') {
-      result[`- ${ast.key}`] = ast.val;
-    }
-    if (ast.type === 'updated') {
-      result[`+ ${ast.key}`] = ast.val;
-    }
-    if (ast.type === 'recursion') {
-      result[`${ast.key}`] = formatterJson(ast.children);
-    }
-  });
-  return result;
-};
+
 // const fff = formatterJson(arrArr);
 // console.log(fff);
 
-export const formatter = (arr) => JSON.stringify(formatterJson(arr), null, 2).replace(/"(- |\+ )?([^"]+)":/g, '$1$2:');
+const stylish = (arr) => JSON.stringify(json(arr), null, 2).replace(/"(- |\+ )?([^"]+)":/g, '$1$2:');
+
+export default stylish;

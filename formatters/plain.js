@@ -1,4 +1,4 @@
-const formatterPlain = (arr, paths = '') => {
+const plain = (arr, paths = '') => {
   let steck = '';
   let reupdateVal = '';
   arr.forEach((obj) => {
@@ -24,7 +24,7 @@ const formatterPlain = (arr, paths = '') => {
     }
     if (type === 'recursion') {
       path += path.length ? `${'.'}${key}` : key;
-      steck += formatterPlain(children, path);
+      steck += plain(children, path);
     }
   });
   return steck;
@@ -82,4 +82,4 @@ const arrArr = [
 
 // console.log(formatterPlain(arrArr, ''));
 
-export default formatterPlain;
+export default plain;
