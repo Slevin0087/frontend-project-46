@@ -26,7 +26,7 @@ make test
 
 ### Formatter 'stylish'
 <img src="./screens/stylish1.jpg" alt='Formatter "stylish"'>
-<img src="./screens/stylish2.jpg" alt='Formatter "stylish"'>
+<img src="./screens/stylish1a.jpg" alt='Formatter "stylish"'>
 
 
 ### Formatter 'plain'
