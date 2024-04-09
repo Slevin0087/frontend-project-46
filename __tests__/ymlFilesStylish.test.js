@@ -2,7 +2,7 @@ import { dirname } from 'path';
 import path from 'node:path';
 import parseYAML from '../lib/parseYAML.js';
 import createTree from '../lib/diff.js';
-import { formatterJson } from '../formatters/stylish.js';
+import { stylish } from '../formatters/index.js';
 
 const fixturePath = (fileName) => {
   const __dirname = dirname(fileName);
@@ -55,7 +55,7 @@ const correctValue = `{
 }`;
 
 test('diff', () => {
-  const parseFile1 = parseYAML(fixturePath('file1.json'));
-  const parseFile2 = parseYAML(fixturePath('file2.json'));
-  expect(formatterJson(createTree(parseFile1, parseFile2))).toEqual(correctValue);
+  const parseFile1 = parseYAML(fixturePath('fileY1.yml'));
+  const parseFile2 = parseYAML(fixturePath('fileY2.yml'));
+  expect(stylish(createTree(parseFile1, parseFile2))).toEqual(correctValue);
 });

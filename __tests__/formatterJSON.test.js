@@ -2,7 +2,7 @@ import { dirname } from 'path';
 import path from 'node:path';
 import parseJSON from '../lib/parseJSON.js';
 import createTree from '../lib/diff.js';
-import { formatterJSON } from '../formatters/stylish.js';
+import { json } from '../formatters/index.js';
 
 const fixturePath = (fileName) => {
   const __dirname = dirname(fileName);
@@ -34,7 +34,7 @@ const correctValue = common: {
   };
 
 test('diff', () => {
-  const parseFile1 = parseJSON(fixturePath('file1.json'));
-  const parseFile2 = parseJSON(fixturePath('file2.json'));
-  expect(formatterJSON(createTree(parseFile1, parseFile2))).toEqual(correctValue);
+  const parseFile1 = parseJSON(fixturePath('fileJ1.json'));
+  const parseFile2 = parseJSON(fixturePath('fileJ2.json'));
+  expect(json(createTree(parseFile1, parseFile2))).toEqual(correctValue);
 });

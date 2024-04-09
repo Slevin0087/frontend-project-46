@@ -2,7 +2,7 @@ import { dirname } from 'path';
 import path from 'node:path';
 import parseJSON from '../lib/parseJSON.js';
 import createTree from '../lib/diff.js';
-import formatterPlain from '../formatters/plain.js';
+import { plain } from '../formatters/index.js';
 
 const fixturePath = (fileName) => {
   const __dirname = dirname(fileName);
@@ -22,7 +22,7 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`;
 
 test('diff', () => {
-  const parseFile1 = parseJSON(fixturePath('file1.json'));
-  const parseFile2 = parseJSON(fixturePath('file2.json'));
-  expect(formatterPlain(createTree(parseFile1, parseFile2))).toEqual(correctValue);
+  const parseFile1 = parseJSON(fixturePath('fileJ1.json'));
+  const parseFile2 = parseJSON(fixturePath('fileJ2.json'));
+  expect(plain(createTree(parseFile1, parseFile2))).toEqual(correctValue);
 });
