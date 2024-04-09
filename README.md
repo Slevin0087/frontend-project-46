@@ -16,6 +16,25 @@ make install
 make test
 ```
 
+## screenshots:
+
+### Сравнение плоских файлов (JSON)
+<img src="./screens/gendiff.jpg" alt='Сравнение плоских файлов (JSON)'>
+
+### Сравнение плоских файлов (yaml)
+<img src="./screens/yml.jpg" alt='Сравнение плоских файлов (yaml)'>
+
+### Formatter 'stylish'
+<img src="./screens/stylish1.jpg" alt='Formatter "stylish"'>
+<img src="./screens/stylish2.jpg" alt='Formatter "stylish"'>
+
+
+### Formatter 'plain'
+<img src="./screens/plain.jpg" alt='Formatter "plain"'>
+
+### Formatter 'json'
+<img src="./screens/json.jpg" alt='Formatter "json"'>
+
 [![Hexlet Ltd. logo](https://raw.githubusercontent.com/Hexlet/assets/master/images/hexlet_logo128.png)](https://hexlet.io/?utm_source=github&utm_medium=link&utm_campaign=nodejs-package)
 
 This repository was created by a Hexlet student. [Read more about Hexlet](https://hexlet.io/?utm_source=github&utm_medium=link&utm_campaign=nodejs-package).
