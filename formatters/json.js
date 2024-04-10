@@ -73,6 +73,6 @@ const arrArr = [
   }
 ]
 
-console.log(json(arrArr));
+// console.log(json(arrArr));
 
 export default json;
