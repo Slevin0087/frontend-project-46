@@ -2,7 +2,9 @@ const json = (arrAst) => {
   const result = {};
   arrAst.forEach((ast) => {
     if (ast.type === 'added') {
+      // console.log('ast.val === "object:"', typeof ast.val === 'object' ? json([ast.val]) : ast.val);
       result[`+ ${ast.key}`] = ast.val;
+      // typeof ast.val === 'object' ? json([ast.val]) : ast.val;
     }
     if (ast.type === 'removed') {
       result[`- ${ast.key}`] = ast.val;
