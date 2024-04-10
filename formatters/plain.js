@@ -1,4 +1,6 @@
 const typeValue = (value) => {
+  // const len = value.length;
+  // console.log(len);
   const type = typeof value;
   if (type === 'object' && value !== null) {
     return '[complex value]';
@@ -6,9 +8,12 @@ const typeValue = (value) => {
   if (type === 'string' && value !== null) {
     return `'${value}'`;
   }
+  if (value === '' && String(value) === 'null') {
+    return '';
+  }
   return value;
 };
-// console.log('typeValue:', typeof typeValue(''));
+// console.log('typeValue:', typeValue(''));
 
 const plain = (arr, paths = '') => {
   let steck = '';
