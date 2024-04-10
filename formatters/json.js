@@ -1,5 +1,5 @@
 const json = (arrAst) => {
-  const result = { };
+  const result = {};
   arrAst.forEach((ast) => {
     if (ast.type === 'added') {
       result[` + ${ast.key}`] = ast.val;
@@ -17,7 +17,7 @@ const json = (arrAst) => {
       result[` + ${ast.key}`] = ast.val;
     }
     if (ast.type === 'recursion') {
-      result[`   ${ast.key}`] = json(ast.children);
+      result[` ${ast.key}`] = json(ast.children);
     }
   });
   return result;
@@ -73,6 +73,6 @@ const arrArr = [
   }
 ]
 
-// console.log(json(arrArr));
+console.log(json(arrArr));
 
 export default json;
