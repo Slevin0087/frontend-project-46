@@ -26,11 +26,11 @@ const stylish = (data) => {
   const leftSpace = 2;
   const iter = (node, depth) => {
     const replacer = gap.repeat(space * depth - leftSpace);
-    console.log('replacer:', replacer);
+    // console.log('replacer:', replacer);
     const collOfStrings = node.map(({
       type, key, val, children,
     }) => {
-      console.log('type:', type);
+      // console.log('type:', type);
       switch (type) {
         case 'recursion':
           return `${replacer}  ${key}: {\n${iter(children, depth + 1)}\n${replacer}  }`;
