@@ -17,7 +17,7 @@ const json = (arrAst) => {
       result[`+ ${ast.key}`] = ast.val;
     }
     if (ast.type === 'recursion') {
-      result[`${ast.key}`] = json(ast.children);
+      result[` ${ast.key}`] = json(ast.children);
     }
   });
   return result;
@@ -72,7 +72,6 @@ const arrArr = [
     val: { deep: { id: { number: 45 } }, fee: 100500 }
   }
 ]
-
 // console.log(json(arrArr));
 
 export default json;
