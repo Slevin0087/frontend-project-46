@@ -5,7 +5,8 @@ const plain = (arr, paths = '') => {
     const {
       type, key, val, children,
     } = obj;
-    const typeVal = typeof val === 'object' && val !== null ? '[complex value]' : val;
+    const valType = typeof val === 'string' ? `'${val}'` : val;
+    const typeVal = typeof valType === 'object' && valType !== null ? '[complex value]' : valType;
     let path = paths;
     if (type === 'added') {
       path += path.length ? `${'.'}${key}` : key;
