@@ -1,5 +1,5 @@
 const json = (arrAst) => {
-  const result = {};
+  const result = { };
   arrAst.forEach((ast) => {
     if (ast.type === 'added') {
       result[` + ${ast.key}`] = ast.val;
