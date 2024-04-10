@@ -1,31 +1,52 @@
+const typeValue = (value) => {
+  const type = typeof value;
+  if (type === 'object' && value !== null) {
+    return '[complex value]';
+  }
+  if (type === 'string' && value !== null) {
+    return `'${value}'`;
+  }
+  return value;
+};
+// console.log('typeValue:', typeof typeValue(''));
+
 const plain = (arr, paths = '') => {
   let steck = '';
-  let reupdateVal = '';
+  let reupdateVal;
   arr.forEach((obj) => {
-    const {
-      type, key, val, children,
-    } = obj;
-    const valType = typeof val === 'string' ? `'${val}'` : val;
-    const typeVal = typeof valType === 'object' && valType !== null ? '[complex value]' : valType;
+    // const {
+    //   type, key, val, children,
+    // } = obj;
+    // console.log('val:', val);
+    // const valType = typeof val === 'string' ? `'${val}'` : val;
+    // console.log('valType:', valType);
+    // const typeVal = typeof valType === 'object' && valType !== null ? '[complex value]' : valType;
     let path = paths;
-    if (type === 'added') {
-      path += path.length ? `${'.'}${key}` : key;
-      steck += `${'Property'} '${path}' ${'was added with value:'} ${typeVal}\n`;
+    if (obj.type === 'added') {
+      path += path.length ? `${'.'}${obj.key}` : obj.key;
+      steck += `${'Property'} '${path}' ${'was added with value:'} ${typeValue(obj.val)}\n`;
     }
-    if (type === 'reupdated') {
-      reupdateVal = typeVal;
+    if (obj.type === 'reupdated') {
+      // console.log('val:', obj.val);
+      // console.log('typeval:', typeof obj.val);
+
+      reupdateVal = typeValue(obj.val);
+      // console.log("val === '' ?", reupdateVal === obj.val);
+      // typeValue(obj.val === `${''}` ? '' : obj.val);
+      // console.log('reupdateVal:', reupdateVal);
     }
-    if (type === 'updated') {
-      path += path.length ? `${'.'}${key}` : key;
-      steck += `${'Property'} '${path}' ${'was updated. From'} ${reupdateVal} ${'to'} ${typeVal}\n`;
+    if (obj.type === 'updated') {
+      // console.log('reupdateValUpdated:', reupdateVal);
+      path += path.length ? `${'.'}${obj.key}` : obj.key;
+      steck += `${'Property'} '${path}' ${'was updated. From'} ${reupdateVal} ${'to'} ${typeValue(obj.val)}\n`;
     }
-    if (type === 'removed') {
-      path += path.length ? `${'.'}${key}` : key;
+    if (obj.type === 'removed') {
+      path += path.length ? `${'.'}${obj.key}` : obj.key;
       steck += `${'Property'} '${path}' ${'was removed'}\n`;
     }
-    if (type === 'recursion') {
-      path += path.length ? `${'.'}${key}` : key;
-      steck += plain(children, path);
+    if (obj.type === 'recursion') {
+      path += path.length ? `${'.'}${obj.key}` : obj.key;
+      steck += plain(obj.children, path);
     }
   });
   return steck;
