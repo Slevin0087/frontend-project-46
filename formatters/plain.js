@@ -1,43 +1,38 @@
-const typeValue = (value) => {
-  const type = typeof value;
-  if (type === 'object' && value !== null) {
+import _ from 'lodash';
+
+const getStringValue = (data) => {
+  if (_.isObject(data)) {
     return '[complex value]';
   }
-  if (type === 'string' && value !== null) {
-    return `'${value}'`;
+  if (typeof data !== 'string') {
+    return String(data);
   }
-  if (value === '' && String(value) === 'null') {
-    return '';
-  }
-  return value;
+  return `'${data}'`;
 };
 
-const plain = (arr, paths = '') => {
-  let steck = '';
-  let reupdateVal;
-  arr.forEach((obj) => {
-    let path = paths;
-    if (obj.type === 'added') {
-      path += path.length ? `${'.'}${obj.key}` : obj.key;
-      steck += `${'Property'} '${path}' ${'was added with value:'} ${typeValue(obj.val)}\n`;
-    }
-    if (obj.type === 'reupdated') {
-      reupdateVal = typeValue(obj.val);
-    }
-    if (obj.type === 'updated') {
-      path += path.length ? `${'.'}${obj.key}` : obj.key;
-      steck += `${'Property'} '${path}' ${'was updated. From'} ${reupdateVal} ${'to'} ${typeValue(obj.val)}\n`;
-    }
-    if (obj.type === 'removed') {
-      path += path.length ? `${'.'}${obj.key}` : obj.key;
-      steck += `${'Property'} '${path}' ${'was removed'}\n`;
-    }
-    if (obj.type === 'recursion') {
-      path += path.length ? `${'.'}${obj.key}` : obj.key;
-      steck += plain(obj.children, path);
-    }
-  });
-  return steck;
+const plain = (data) => {
+  const iter = (node, currentKey) => {
+    const collOfStrings = node.map(({
+      type, key, value, value2,
+    }) => {
+      switch (type) {
+        case 'recursion':
+          return iter(value, `${currentKey}${key}.`);
+        case 'removed':
+          return `Property '${currentKey}${key}' was removed\n`;
+        case 'added':
+          return `Property '${currentKey}${key}' was added with value: ${getStringValue(value)}\n`;
+        case 'reupdated':
+          return `Property '${currentKey}${key}' was updated. From ${getStringValue(value)} to ${getStringValue(value2)}\n`;
+        case 'norm':
+          return null;
+        default:
+          throw new Error('Unknown format');
+      }
+    });
+    return `${collOfStrings.join('')}`;
+  };
+  return iter(data, '').trim();
 };
 
 export default plain;

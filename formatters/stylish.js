@@ -21,22 +21,20 @@ const stylish = (data) => {
   const leftSpace = 2;
   const iter = (node, depth) => {
     const replacer = gap.repeat(space * depth - leftSpace);
-    const collOfStrings = node.map(({
-      type, key, val, children,
+    const collOfStrings = node.forEach(({
+      type, key, val, val2,
     }) => {
       switch (type) {
         case 'recursion':
-          return `${replacer}  ${key}: {\n${iter(children, depth + 1)}\n${replacer}  }`;
+          return `${replacer}  ${key}: {\n${iter(val, depth + 1)}\n${replacer}  }`;
         case 'removed':
           return `${replacer}- ${key}: ${getStringOfValue(val, depth)}`;
         case 'added':
           return `${replacer}+ ${key}: ${getStringOfValue(val, depth)}`;
         case 'norm':
           return `${replacer}  ${key}: ${getStringOfValue(val, depth)}`;
-        case 'reupdated':
-          return `${replacer}- ${key}: ${getStringOfValue(val, depth)}`;
         case 'updated':
-          return `${replacer}+ ${key}: ${getStringOfValue(val, depth)}`;
+          return `${replacer}+ ${key}: ${getStringOfValue(val, depth)}\n${replacer}+ ${key}: ${getStringOfValue(val2, depth)}`;
         default:
           throw new Error('Unknown format');
       }
