@@ -34,7 +34,7 @@ const stylish = (data) => {
         case 'norm':
           return `${replacer}  ${key}: ${getStringOfValue(value, depth)}`;
         case 'reupdated':
-          return `${replacer}+ ${key}: ${getStringOfValue(value, depth)}\n${replacer}+ ${key}: ${getStringOfValue(value2, depth)}`;
+          return `${replacer}- ${key}: ${getStringOfValue(value, depth)}\n${replacer}+ ${key}: ${getStringOfValue(value2, depth)}`;
         default:
           throw new Error('Unknown format');
       }
