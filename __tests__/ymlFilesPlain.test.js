@@ -1,6 +1,6 @@
 import { dirname } from 'path';
 import path from 'node:path';
-import parseYAML from '../lib/parseYAML.js';
+import parsingFiles from '../lib/parsers.js';
 import createTree from '../lib/diff.js';
 import { plain } from '../formatters/index.js';
 
@@ -22,7 +22,7 @@ Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`;
 
 test('diff', () => {
-  const parseFile1 = parseYAML(fixturePath('fileY1.yml'));
-  const parseFile2 = parseYAML(fixturePath('fileY2.yml'));
+  const parseFile1 = parsingFiles(fixturePath('fileY1.yml'));
+  const parseFile2 = parsingFiles(fixturePath('fileY2.yml'));
   expect(plain(createTree(parseFile1, parseFile2))).toEqual(correctValue);
 });

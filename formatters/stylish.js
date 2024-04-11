@@ -21,20 +21,20 @@ const stylish = (data) => {
   const leftSpace = 2;
   const iter = (node, depth) => {
     const replacer = gap.repeat(space * depth - leftSpace);
-    const collOfStrings = node.forEach(({
-      type, key, val, val2,
+    const collOfStrings = node.map(({
+      type, key, value, value2,
     }) => {
       switch (type) {
         case 'recursion':
-          return `${replacer}  ${key}: {\n${iter(val, depth + 1)}\n${replacer}  }`;
+          return `${replacer}  ${key}: {\n${iter(value, depth + 1)}\n${replacer}  }`;
         case 'removed':
-          return `${replacer}- ${key}: ${getStringOfValue(val, depth)}`;
+          return `${replacer}- ${key}: ${getStringOfValue(value, depth)}`;
         case 'added':
-          return `${replacer}+ ${key}: ${getStringOfValue(val, depth)}`;
+          return `${replacer}+ ${key}: ${getStringOfValue(value, depth)}`;
         case 'norm':
-          return `${replacer}  ${key}: ${getStringOfValue(val, depth)}`;
-        case 'updated':
-          return `${replacer}+ ${key}: ${getStringOfValue(val, depth)}\n${replacer}+ ${key}: ${getStringOfValue(val2, depth)}`;
+          return `${replacer}  ${key}: ${getStringOfValue(value, depth)}`;
+        case 'reupdated':
+          return `${replacer}+ ${key}: ${getStringOfValue(value, depth)}\n${replacer}+ ${key}: ${getStringOfValue(value2, depth)}`;
         default:
           throw new Error('Unknown format');
       }
