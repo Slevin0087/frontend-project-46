@@ -21,7 +21,7 @@ const stylish = (data) => {
   const leftSpace = 2;
   const iter = (node, depth) => {
     const replacer = gap.repeat(space * depth - leftSpace);
-    const collOfStrings = node.map(({
+    const result = node.map(({
       type, key, value, value2,
     }) => {
       switch (type) {
@@ -39,7 +39,7 @@ const stylish = (data) => {
           throw new Error('Unknown format');
       }
     });
-    return collOfStrings.join('\n');
+    return result.join('\n');
   };
   return `{\n${iter(data, 1)}\n}`;
 };

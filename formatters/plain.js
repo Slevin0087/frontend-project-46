@@ -12,7 +12,7 @@ const getStringValue = (data) => {
 
 const plain = (data) => {
   const iter = (node, currentKey) => {
-    const collOfStrings = node.map(({
+    const result = node.map(({
       type, key, value, value2,
     }) => {
       switch (type) {
@@ -30,7 +30,7 @@ const plain = (data) => {
           throw new Error('Unknown format');
       }
     });
-    return `${collOfStrings.join('')}`;
+    return `${result.join('')}`;
   };
   return iter(data, '').trim();
 };
