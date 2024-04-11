@@ -6,7 +6,7 @@ import { plain } from '../formatters/index.js';
 
 const fixturePath = (fileName) => {
   const __dirname = dirname(fileName);
-  return path.resolve(__dirname, '__fixtures__', fileName);
+  return path.resolve(__dirname, '..', '__fixtures__', fileName);
 };
 
 const correctValue = `Property 'common.follow' was added with value: false
