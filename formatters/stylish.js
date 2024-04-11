@@ -1,9 +1,4 @@
 import _ from 'lodash';
-// import json from './json.js';
-
-// const stylish = (arr) => JSON.stringify(json(arr), null, 4).replace(/("|'|,)/gm, '');
-
-// export default stylish;
 
 const gap = ' ';
 const space = 4;
@@ -26,11 +21,9 @@ const stylish = (data) => {
   const leftSpace = 2;
   const iter = (node, depth) => {
     const replacer = gap.repeat(space * depth - leftSpace);
-    // console.log('replacer:', replacer);
     const collOfStrings = node.map(({
       type, key, val, children,
     }) => {
-      // console.log('type:', type);
       switch (type) {
         case 'recursion':
           return `${replacer}  ${key}: {\n${iter(children, depth + 1)}\n${replacer}  }`;
@@ -52,7 +45,5 @@ const stylish = (data) => {
   };
   return `{\n${iter(data, 1)}\n}`;
 };
-
-// console.log(stylish(arrArr));
 
 export default stylish;
