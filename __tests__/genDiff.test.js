@@ -23,7 +23,7 @@ test('genDiff, json', () => {
 test('genDiff, yaml', () => {
   expect(
     genDiff('fileYaml1.yaml', 'fileYaml2.yaml', 'stylish'),
-  ).toEqual(readFile('expectedstylish.txt'.trim()));
+  ).toEqual(readFile('expectedStylish.txt'.trim()));
 });
 
 test('genDiff, json plain', () => {
@@ -46,6 +46,6 @@ test('genDiff, json JSON', () => {
 
 test('genDiff, yml JSON', () => {
   expect(
-    genDiff('fileYaml1.yml', 'fileYaml2.yml', 'json'),
+    genDiff('fileYaml1.yaml', 'fileYaml2.yaml', 'json'),
   ).toEqual(readFile('expectedJson.txt'.trim()));
 });
