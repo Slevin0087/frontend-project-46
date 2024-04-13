@@ -5,7 +5,7 @@ import genDiff from '../src/index.js';
 
 const fixturePath = (fileName) => {
   const __dirname = dirname(fileName);
-  return path.resolve(__dirname, '..', '__fixtures__', fileName);
+  return path.resolve(__dirname, '__fixtures__', fileName);
 };
 
 const readFile = (filename) => readFileSync(fixturePath(filename), 'utf-8');
