@@ -1,107 +1,108 @@
 [
  {
+  "type": "recursion",
   "key": "common",
   "value": [
    {
+    "type": "added",
     "key": "follow",
-    "value": false,
-    "status": "added"
+    "value": false
    },
    {
+    "type": "norm",
     "key": "setting1",
-    "value": "Value 1",
-    "status": "unchanged"
+    "value": "Value 1"
    },
    {
+    "type": "removed",
     "key": "setting2",
-    "value": 200,
-    "status": "deleted"
+    "value": 200
    },
    {
+    "type": "reupdated",
     "key": "setting3",
     "value": true,
-    "newValue": null,
-    "status": "changed"
+    "value2": null
    },
    {
+    "type": "added",
     "key": "setting4",
-    "value": "blah blah",
-    "status": "added"
+    "value": "blah blah"
    },
    {
+    "type": "added",
     "key": "setting5",
     "value": {
      "key5": "value5"
-    },
-    "status": "added"
+    }
    },
    {
+    "type": "recursion",
     "key": "setting6",
     "value": [
      {
+      "type": "recursion",
       "key": "doge",
       "value": [
        {
+        "type": "reupdated",
         "key": "wow",
         "value": "",
-        "newValue": "so much",
-        "status": "changed"
+        "value2": "so much"
        }
-      ],
-      "status": "nested"
+      ]
      },
      {
+      "type": "norm",
       "key": "key",
-      "value": "value",
-      "status": "unchanged"
+      "value": "value"
      },
      {
+      "type": "added",
       "key": "ops",
-      "value": "vops",
-      "status": "added"
+      "value": "vops"
      }
-    ],
-    "status": "nested"
+    ]
    }
-  ],
-  "status": "nested"
+  ]
  },
  {
+  "type": "recursion",
   "key": "group1",
   "value": [
    {
+    "type": "reupdated",
     "key": "baz",
     "value": "bas",
-    "newValue": "bars",
-    "status": "changed"
+    "value2": "bars"
    },
    {
+    "type": "norm",
     "key": "foo",
-    "value": "bar",
-    "status": "unchanged"
+    "value": "bar"
    },
    {
+    "type": "reupdated",
     "key": "nest",
     "value": {
      "key": "value"
     },
-    "newValue": "str",
-    "status": "changed"
+    "value2": "str"
    }
-  ],
-  "status": "nested"
+  ]
  },
  {
+  "type": "removed",
   "key": "group2",
   "value": {
    "abc": 12345,
    "deep": {
     "id": 45
    }
-  },
-  "status": "deleted"
+  }
  },
  {
+  "type": "added",
   "key": "group3",
   "value": {
    "deep": {
@@ -110,7 +111,6 @@
     }
    },
    "fee": 100500
-  },
-  "status": "added"
+  }
  }
 ]
