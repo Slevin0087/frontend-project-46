@@ -11,24 +11,15 @@ const fixturePath = (fileName) => {
 const readFile = (filename) => readFileSync(fixturePath(filename), 'utf-8');
 
 const stylishData = readFile('expectedStylish.txt'.trim());
-console.log('stylishData:', stylishData);
 const stylishDataYaml = readFile('expectedstylish.txt'.trim());
-console.log('stylishDataYaml:', stylishDataYaml);
 const plainData = readFile('expectedPlain.txt'.trim());
-console.log('plain:', plainData);
 const plainDataYaml = readFile('expectedPlain.txt'.trim());
-console.log('plainYaml:', plainDataYaml);
 const jsonFormat = readFile('expectedJson.txt'.trim());
-console.log('jon:', jsonFormat);
-
-console.log('diff:', genDiff('fileJ1.json', 'fileJ2.json', 'stylish'));
-
 test('genDiff, json', () => {
   expect(
     genDiff('fileJ1.json', 'fileJ2.json', 'stylish'),
   ).toEqual(stylishData);
 });
-console.log('diff:', genDiff('fileJ1.json', 'fileJ2.json', 'stylish'));
 test('genDiff, yaml', () => {
   expect(
     genDiff('fileYaml1.yaml', 'fileYaml2.yaml', 'stylish'),
