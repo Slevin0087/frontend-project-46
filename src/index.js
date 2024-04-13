@@ -21,6 +21,6 @@ const genDiff = (file1, file2, formatName = 'stylish') => {
   return getFormatterTree(tree, formatName);
 };
 
-console.log(genDiff('fileJ1.json', 'fileJ2.json'));
+// console.log(genDiff('fileJ1.json', 'fileJ2.json'));
 
 export default genDiff;
