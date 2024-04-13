@@ -7,7 +7,7 @@ import getFormatterTree from './formatters/index.js';
 
 const fixturePath = (fileName) => {
   const __dirname = dirname(fileName);
-  return path.resolve(__dirname, '..', '__fixtures__', fileName);
+  return path.resolve(__dirname, '__fixtures__', fileName);
 };
 
 const fileExtension = (fileName) => fileName.split('.').at(-1);
