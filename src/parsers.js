@@ -1,15 +1,13 @@
-import { readFileSync } from 'node:fs';
 import { load } from 'js-yaml';
 
 const parsingFiles = (file, format) => {
-  const readFile = readFileSync(file);
   switch (format) {
     case 'json':
-      return JSON.parse(readFile);
+      return JSON.parse(file);
     case 'yaml':
-      return load(readFile);
+      return load(file);
     case 'yml':
-      return load(readFile);
+      return load(file);
     default:
       throw new Error(`Unkown format ${format}`);
   }

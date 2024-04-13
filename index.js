@@ -1,3 +1,3 @@
-import diff from './lib/diff.js';
+// import diff from './lib/diff.js';
 
-export default diff;
+// export default diff;
