@@ -10,11 +10,6 @@ const fixturePath = (fileName) => {
 
 const readFile = (filename) => readFileSync(fixturePath(filename), 'utf-8');
 
-// const stylishData = readFile('expectedStylish.txt'.trim());
-// const stylishDataYaml = readFile('expectedstylish.txt'.trim());
-// const plainData = readFile('expectedPlain.txt'.trim());
-// const plainDataYaml = readFile('expectedPlain.txt'.trim());
-// const jsonFormat = readFile('expectedJson.txt'.trim());
 test('genDiff, json', () => {
   expect(
     genDiff('fileJ1.json', 'fileJ2.json', 'stylish'),
